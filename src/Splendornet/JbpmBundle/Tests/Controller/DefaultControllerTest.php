@@ -1,6 +1,6 @@
 <?php
 
-namespace Splendoernet\JbpmBundle\Tests\Controller;
+namespace Splendornet\JbpmBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

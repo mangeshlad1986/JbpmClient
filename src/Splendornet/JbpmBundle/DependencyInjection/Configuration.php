@@ -1,6 +1,6 @@
 <?php
 
-namespace Splendoernet\JbpmBundle\DependencyInjection;
+namespace Splendornet\JbpmBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

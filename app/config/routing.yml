@@ -1,5 +1,5 @@
 splendoernet_jbpm:
-    resource: "@SplendoernetJbpmBundle/Resources/config/routing.xml"
+    resource: "@SplendornetJbpmBundle/Resources/config/routing.xml"
     prefix:   /
 
 app:

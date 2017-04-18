@@ -6,7 +6,7 @@
 
     <!--
     <services>
-        <service id="splendoernet_jbpm.example" class="Splendoernet\JbpmBundle\Example">
+        <service id="splendoernet_jbpm.example" class="Splendornet\JbpmBundle\Example">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
