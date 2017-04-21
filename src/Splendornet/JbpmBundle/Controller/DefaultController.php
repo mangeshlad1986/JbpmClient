@@ -11,42 +11,65 @@ class DefaultController extends Controller
 {
     public function indexAction()
     { 
-        // get JBPM client service to connect to rest API      
-        $jbpmClient = $this->container->get('jbpm_rest_client')->getClient();
 
+        //=====================================================================
+        // Below are examples to use JBPM bundle. 
+        // Uncomment specific code block to see result.
+        //=====================================================================
+
+        //=====================================================================
+        // You can directly get JOPB client and write REST call
+        //=====================================================================
+        
+        // $jbpmClient = $this->container->get('jbpm_rest_client')->getClient();
+
+        //=====================================================================
         // get all JBPM tasks
-        $jbpmTasks = $this->container->get('jbpm_task')->getTasks();
+        //=====================================================================
+
+        // $jbpmTasks = $this->container->get('jbpm_task')->getTasks();
 
         // echo "<pre>";
         // print_r($jbpmTasks);
         // echo "</pre>";exit;
 
-        // get JBPM process by deployementId and processDefId
+        //=====================================================================
+        // get JBPM process by passing deployementId and processDefId (Hardcoded for now)
+        //=====================================================================        
 
-        $deploymentId = 'mortgages:mortgages:0.0.1';
-        $processDefId = 'mortgages.HelloWorldProcess';
-        $process = $this->container->get('jbpm_process')->getProcess($deploymentId,$processDefId);        
+        // $deploymentId = 'mortgages:mortgages:0.0.1';
+        // $processDefId = 'mortgages.HelloWorldProcess';
+        // $process = $this->container->get('jbpm_process')->getProcess($deploymentId,$processDefId);        
         
         // start process
+
         // $response = $process->start();
         // echo "<pre>";
         // print_r($response);
         // echo "</pre>";exit;
 
         // stop process
-        $response = $process->stop();
+        
+        // $response = $process->stop();
         // echo "<pre>";
         // print_r($response);
         // echo "</pre>";exit;
 
+        //=====================================================================
         // release JBPM task
-        $response = $jbpmTasks[1]->release();
+        //=====================================================================
+        
+        // $response = $jbpmTasks[1]->release();
 
         // echo "<pre>";
         // print_r($response);
         // echo "</pre>";exit;
 
+        
+        //=====================================================================
         // run JBPM task
+        //=====================================================================
+
         // $response = $jbpmTasks[1]->start();
 
         // echo "<pre>";
@@ -54,16 +77,18 @@ class DefaultController extends Controller
         // echo "</pre>";
 
 
-        // stop JBPM running task\
+        //=====================================================================
+        // stop JBPM task
+        //=====================================================================
+
         // $response = $jbpmTasks[1]->stop();
 
         // echo "<pre>";
         // print_r($response);
-        // echo "</pre>";    
-                
-        exit;
+        // echo "</pre>";                    
+        // exit;
 
-        return $this->render('SplendornetJbpmBundle:Default:index.html.twig');
+        // return $this->render('SplendornetJbpmBundle:Default:index.html.twig');
     }
 }
 
