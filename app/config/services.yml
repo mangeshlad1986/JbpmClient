@@ -13,3 +13,6 @@ services:
     jbpm_task:
        class:  Splendornet\JbpmBundle\Service\Task
        arguments: ['@jbpm_rest_client']
+    jbpm_process:
+       class:  Splendornet\JbpmBundle\Service\Process
+       arguments: ['@jbpm_rest_client']

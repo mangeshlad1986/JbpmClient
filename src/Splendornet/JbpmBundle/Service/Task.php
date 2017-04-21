@@ -47,11 +47,17 @@ class Task
       */
     public static function getTasks() 
     {
-        $client = self::$_jbpm_rest_client->getClient();
-        $response = $client->get('task/query/');
+        $client = self::$_jbpm_rest_client->getClient(); 
+        try {
+            $response = $client->get('task/query/');
+        } catch(Exception $e) {
+            echo "Error occured while connecting to JBPM REST Api.";die;
+        }
+        
         $data = $response->getBody()->getContents();        
         $data = json_decode($data,true);
 
+        $taskArray = [];
         foreach($data['taskSummaryList'] as $task) {        
             $taskArray[] = new Task(self::$_jbpm_rest_client,$task);
         }
@@ -66,8 +72,16 @@ class Task
       */
     public function release()
     {
+        if($this->status == 'Ready') {
+            return "Task is already released !";
+        }
+
         $client = self::$_jbpm_rest_client->getClient();
-        $response = $client->post('task/'.$this->id.'/release');
+        try {
+            $response = $client->post('task/'.$this->id.'/release');
+        } catch(Exception $e) {
+            echo "Error occured while connecting to JBPM REST Api.";die;
+        }
 
         return $response->getBody()->getContents();
     } 
@@ -79,8 +93,16 @@ class Task
       */
     public function start()
     {
+        if($this->status != 'Ready') {
+            return "Task should first be released before starting !";
+        }
+
         $client = self::$_jbpm_rest_client->getClient();
-        $response = $client->post('task/'.$this->id.'/start');
+        try {
+            $response = $client->post('task/'.$this->id.'/start');
+        } catch(Exception $e) {
+           echo "Error occured while connecting to JBPM REST Api."; die;
+        }
 
         return $response->getBody()->getContents();
     }
@@ -93,7 +115,11 @@ class Task
     public function stop()
     {
         $client = self::$_jbpm_rest_client->getClient();
-        $response = $client->post('task/'.$this->id.'/stop');
+        try {
+            $response = $client->post('task/'.$this->id.'/stop');
+        } catch(Exception $e) {
+            echo "Error occured while connecting to JBPM REST Api.";die; 
+        }
 
         return $response->getBody()->getContents();
     }        

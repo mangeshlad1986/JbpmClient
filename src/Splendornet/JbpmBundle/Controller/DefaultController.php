@@ -16,17 +16,35 @@ class DefaultController extends Controller
 
         // get all JBPM tasks
         $jbpmTasks = $this->container->get('jbpm_task')->getTasks();
-        
+
         // echo "<pre>";
         // print_r($jbpmTasks);
         // echo "</pre>";exit;
 
+        // get JBPM process by deployementId and processDefId
+
+        $deploymentId = 'mortgages:mortgages:0.0.1';
+        $processDefId = 'mortgages.HelloWorldProcess';
+        $process = $this->container->get('jbpm_process')->getProcess($deploymentId,$processDefId);        
+        
+        // start process
+        // $response = $process->start();
+        // echo "<pre>";
+        // print_r($response);
+        // echo "</pre>";exit;
+
+        // stop process
+        $response = $process->stop();
+        // echo "<pre>";
+        // print_r($response);
+        // echo "</pre>";exit;
+
         // release JBPM task
-        // $response = $jbpmTasks[1]->release();
+        $response = $jbpmTasks[1]->release();
 
         // echo "<pre>";
         // print_r($response);
-        // echo "</pre>";
+        // echo "</pre>";exit;
 
         // run JBPM task
         // $response = $jbpmTasks[1]->start();
@@ -41,7 +59,7 @@ class DefaultController extends Controller
 
         // echo "<pre>";
         // print_r($response);
-        // echo "</pre>";
+        // echo "</pre>";    
                 
         exit;
 
