@@ -18,7 +18,7 @@ class DefaultController extends Controller
         //=====================================================================
 
         //=====================================================================
-        // You can directly get JOPB client and write REST call
+        // You can directly get JBPB client and write REST call
         //=====================================================================
         
         // $jbpmClient = $this->container->get('jbpm_rest_client')->getClient();
